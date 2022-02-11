@@ -1,0 +1,22 @@
+cognito:
+  client-id: put-here
+  client-secret: put-here
+  user-pool-region: put-here
+  user-pool-id: put-here
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            provider: cognito
+            client-id: ${cognito.client-id}
+            client-secret: ${cognito.client-secret}
+            client-name: AWS Cognito
+            scope: openid
+            redirect-uri: http://localhost:8080/login/oauth2/code/cognito
+        provider:
+          cognito:
+            issuer-uri: https://cognito-idp.${cognito.user-pool-region}.amazonaws.com/${cognito.user-pool-id}
+            user-name-attribute: email

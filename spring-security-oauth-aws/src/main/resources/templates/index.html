@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, World!</title>
+</head>
+<body>
+    <h1>
+        Hello, World!
+    </h1>
+
+    <p>
+        <b>User name:</b>
+        <span th:text="${name}" />
+    </p>
+
+    <p>
+        <b>Authorities:</b>
+        <ul>
+            <li th:each="authority : ${authorities}"
+                th:text="${authority.authority}" />
+        </ul>
+    </p>
+
+    <p>
+        <b>Attributes:</b>
+        <dl>
+            <th:block th:each="entry: ${attributes}">
+                <dt th:text="${entry.key}" />
+                <dd th:text="${entry.value}" />
+            </th:block>
+        </dl>
+    </p>
+</body>
+</html>
